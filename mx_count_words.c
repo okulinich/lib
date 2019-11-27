@@ -10,7 +10,7 @@ int mx_count_words(const char *str, char c) {
         res = 0;
         for (i = 0; str[i] == c; i++)
             continue; // skiping delims at the beginning
-        for( ; i <= len; i++) {
+        for ( ; i <= len; i++) {
             if ((str[i] == c || str[i] == '\0') && flag == 1) {//if we were inside the word
                 flag = 0;//out of the word
                 res++;

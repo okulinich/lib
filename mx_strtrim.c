@@ -1,5 +1,12 @@
 #include "./libmx.h"
 
+static bool mx_isspace(char c) {
+    if(c == '\n' || c == '\t' || c == ' ' ||
+       c == '\f' || c == '\r' || c == '\v')
+        return true;
+    return false;
+}
+
 char *mx_strtrim(const char *str) {
     char *tr_str = NULL;
 

@@ -28,7 +28,6 @@ char *mx_itoa(int number) {
     if (number == 0) {
         res = mx_strnew(1);
         res[0] = '0';
-        return res;
     }
     else {
         sign_and_size(&sign, &size, &number, &flag);
@@ -39,6 +38,6 @@ char *mx_itoa(int number) {
         }
         res[0] = (sign == -1) ? '-' : res[0];
         res[10] = (flag == 1) ? '8' : res[10];
-        return res;
     }
+    return res;
 }

@@ -1,13 +1,25 @@
 #include "./libmx.h"
 
+static size_t w_strlen(const char *s) {
+    size_t i = 0;
+
+    for( ; s[i] != '\0'; i++)
+        ;
+    return i;
+}
+
+
 char *mx_strndup(const char *s1, size_t n) {
-    char *res = NULL;
-    char *s2 = (char *)malloc(n + 1);
-    if(s2) {
-        res = mx_strncpy(s2, s1, n);
-        res[n] = '\0';
+    size_t size = n;
+
+    if(n == 0 || !s1)
+        return NULL;
+    if(w_strlen(s1) < n)
+        size = w_strlen(s1);
+    char *s2 = mx_strnew(size);
+    
+    if (s2) {
+        mx_strncpy(s2, s1, size);
     }
-    else
-        res = NULL;
-    return res;
+    return s2;
 }

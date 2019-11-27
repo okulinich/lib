@@ -1,5 +1,16 @@
 #include "./libmx.h"
 
+static void print_num(char *arr, int sign, int flag) {
+    if (flag == 1)
+            arr[0] = '8';
+    for (int i = 9; i >= 0; i--) {
+            if (sign == -1 && i == 9)
+                mx_printchar('-');
+            if (arr[i] >= '0' && arr[i] <= '9')
+                mx_printchar(arr[i]);
+    }
+}
+
 void mx_printint(int n) {
     char arr[10];
     int sign = 1;
@@ -21,8 +32,6 @@ void mx_printint(int n) {
             arr[i++] = (n % 10) + '0';
             n /= 10;
         }
-        if (flag == 1)
-            arr[0] = '8';
-        mx_print_num(arr, sign);
+        print_num(arr, sign, flag);
     }
 }
